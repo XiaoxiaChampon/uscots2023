@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+<title>Teaching and Student Exploration of Convergence Concepts Using Interactive Shiny Applications</title>
+
+
+
+
+
+
+
+<!--
+Font-awesome icons ie github or twitter
+-->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/brands.css" integrity="sha384-n9+6/aSqa9lBidZMRCQHTHKJscPq6NW4pCQBiMmHdUCvPN8ZOg2zJJTkC7WIezWv" crossorigin="anonymous">
+
+<!--
+Google fonts api stuff
+-->
+<link href='https://fonts.googleapis.com/css?family=Special Elite' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Rasa' rel='stylesheet'>
+
+<!--
+Here are the required style attributes for css to make this poster work :)
+-->
+<style>
+@page {
+size: 47.25in 36in;
+margin: 0;
+padding: 0;
+background-color: #ffffff;
+}
+body {
+margin: 0px;
+padding: 0px;
+width: 47.25in;
+height: 36in;
+text-align: justify;
+font-size: 45px;
+background-color: #FFFFFF;
+color: #000000;
+}
+/* RMarkdown Class Styles */
+/* center align leaflet map,
+from https://stackoverflow.com/questions/52112119/center-leaflet-in-a-rmarkdown-document */
+.html-widget {
+margin: auto;
+position: sticky;
+margin-top: 2cm;
+margin-bottom: 2cm;
+}
+.leaflet.html-widget.html-widget-static-bound.leaflet-container.leaflet-touch.leaflet-fade-anim.leaflet-grab.leaflet-touch-drag.leaflet-touch-zoom {
+position: sticky;
+width: 100%;
+}
+pre.sourceCode.r {
+background-color: #dddddd40;
+border-radius: 4mm;
+padding: 4mm;
+width: 75%;
+margin: auto;
+margin-top: 1em;
+margin-bottom: 1em;
+/* align-items: center; */
+}
+code.sourceCode.r{
+background-color: transparent;
+font-size: 20pt;
+border-radius: 2mm;
+}
+code {
+font-size: 25pt;
+font-family: monospace;
+background-color: #F2F2F224;
+color: #CC0000;
+padding: 1.2mm;
+line-height: 1;
+border-radius: 2mm;
+}
+caption {
+margin-bottom: 10px;
+font-size: 20pt;
+font-style: italic;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #CC000020;
+}
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td{
+  border-spacing: 0;
+  font-size: 40%;
+  border-style: none;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-right: 1em;
+  padding-left: 1em;
+  line-height: 1em;
+}
+table {
+  margin: auto;
+}
+th {
+  padding-left: 5mm;
+  padding-right: 5mm;
+}
+.caption {
+font-size: 20pt;
+font-style: italic;
+padding-top: 0;
+}
+.references {
+font-size: 20px;
+line-height: 90%;
+}
+/* Create three unequal columns that floats next to each other */
+.column {
+float: left;
+padding: 0px;
+}
+.outer {
+width: 47.25in;
+height: 36in;
+-webkit-column-count: 2; /* Chrome, Safari, Opera */
+-moz-column-count: 2; /* Firefox */
+column-count: 2;
+-webkit-column-fill: auto;
+-moz-column-fill: auto;
+column-fill: auto;
+-webkit-column-rule-width: 50%;
+-moz-column-rule-width: 50%;
+column-rule-width: 50%;
+-webkit-column-rule-style: solid;
+-moz-column-rule-style: solid;
+column-rule-style: solid;
+-webkit-column-rule-color: black;
+-moz-column-rule-color: black;
+column-rule-color: black;
+-webkit-column-gap: 50%;
+background-color: #ffffff;
+font-family: Rasa;
+color: #000000;
+}
+span.citation {
+  color: #F2F2F2;
+  font-weight: bold;
+}
+a {
+text-decoration: none;
+color: #F2F2F2;
+}
+#title {
+font-size: 125pt;
+text-align: left;
+margin: 0;
+line-height: 90%;
+border-bottom: 0;
+}
+#author {
+color: #CC0000;
+margin: 0;
+line-height: 90%;
+font-size: 1.17em;
+}
+#affiliation {
+padding-top: 1em;
+color: #00000060;
+font-style: italic;
+font-size: 25px;
+margin: 0;
+}
+sup {
+color: #cc0000;
+}
+.affiliation sup {
+font-size: 20px;
+}
+.author sup {
+font-size: 30px;
+}
+.author_extra {
+color: #F2F2F2;
+margin: 0;
+line-height: 85%;
+font-size: 35px;
+}
+.outer h1 {
+text-align: center;
+margin-top: 0.5in;
+margin-bottom: 0.5in;
+}
+.outer h2 {
+text-align: center;
+}
+.outer p {
+color: #000000;
+}
+.outer ol {
+text-align: left;
+}
+.main {
+width: calc(47.25in / 2);
+height: 36in;
+position: absolute;
+margin-left: calc(47.25in / 4);
+background-color: #CC0000;
+color: #FFFFFF90;
+font-family: Special Elite;
+background-image: linear-gradient(#CC0000 50%, #F2F2F2);
+}
+.main strong {
+color: #FFFFFF;
+}
+img.main-img-left {
+width: 20%;
+left: 0.5in;
+bottom: 0.2in;
+position: absolute;
+}
+img.main-img-right {
+width: 18%;
+right: 0.5in;
+bottom: 0.2in;
+position: absolute;
+}
+.main p {
+padding-top: 20%;
+font-size: 170px;
+text-align: left;
+}
+.fab {
+color: #00000060;
+font-size: 25px;
+}
+.twitter, i {
+color: #00000060;
+font-size: 35px;
+text-decoration: none;
+}
+a.email {
+text-decoration: none;
+color: #00000060;
+font-size: 35px;
+}
+.envelope {
+color: #00000060;
+font-size: 5px;
+text-decoration: none;
+}
+.poster_wrap {
+width: 47.25in;
+height: 36in;
+padding: 0cm;
+background-color: #ffffff;
+}
+span > #tab:mytable {
+  font-weight: bold;
+}
+.section {
+  padding-left: 10mm;
+  padding-right: 10mm;
+}
+.main p {
+  padding-left: 30mm;
+  padding-right: 30mm;
+}
+.main_pic {
+  width: 50%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.orcid img {
+  width: 3%;
+}
+</style>
+</head>
+<body>
+
+
+<div class="poster_wrap">
+<div class="column outer">
+<br>
+<div class="title section">
+<h1 id="title">Teaching and Student Exploration of Convergence Concepts Using Interactive Shiny Applications</h1>
+<br>
+<h3 id="author" class="author">
+
+Xiaoxia Champon , Justin Post<sup> 1</sup><br>
+
+<a class='envelope'><i class="fas fa-envelope"></i></a> <a href="mailto:xzhao17@ncsu.edu" class="email">xzhao17@ncsu.edu</a>,<a href="mailto:jbpost2@ncsu.edu" class="email">jbpost2@ncsu.edu</a> <br>
+</h3>
+
+<h5 id="author_extra" class="author_extra">
+</h5>
+
+<p id="affiliation" class="affiliation">
+<sup>1</sup> Department of Statistics, NC State University <br> jbpost2.github.io
+</p>
+
+</div>
+<div id="motivation-and-goals" class="section level2">
+<h2>Motivation and Goals</h2>
+<p>The motivation of this activity is to encourage communicating these abstract topics with an interactive investigation focused on visuals that enhance intuition and understanding. To be specific:</p>
+<ul>
+<li>Two commonly taught convergence concepts: in distribution and in probability will be demonstrated through the use of interactive Shiny Applications</li>
+</ul>
+<p>-These tools allow for multiple random sequences with known features to be simulated and the behavior changes of the random sequences to be explored through visual representations</p>
+<p>-Any users can take advantage of this visualization tool without needing knowledge of any programming language</p>
+<p>-Users can share this app with students and peers which promotes collaborations</p>
+</div>
+<div id="the-idea-of-convergence-in-distribution" class="section level2">
+<h2>The idea of Convergence in Distribution</h2>
+<ul>
+<li>Compare the <em>actual</em> distribution and approximating distribution <br><br></li>
+<li>Do the cumulative density distributions match when the sample size is large?</li>
+<li>Explore: simulate sample mean by creating many <em>realizations</em> of <span class="math inline">\(\bar{Y}\)</span> where <span class="math inline">\(Y\sim Gamma (\alpha, \lambda)\)</span> <br></li>
+</ul>
+<p>-<img src="img/dgamma.png" width="900px" style="float: left;"/> <br></p>
+</div>
+<div id="central-limit-theorem-applied-to-a-sample-proportion" class="section level2">
+<h2>Central Limit Theorem Applied to a Sample Proportion</h2>
+<p>CLT application - the sample proportion from a Binomial distribution</p>
+<ul>
+<li>If <span class="math inline">\(X_i\stackrel{iid}\sim Bin(1, p)\)</span> with mean <span class="math inline">\(E(Y) = p\)</span> and variance <span class="math inline">\(Var(Y) = p(1-p)\)</span></li>
+<li><span class="math inline">\(\bar{X} = \frac{\sum_{i=1}^{n}X_i}{n} = \frac{Y}{n}\stackrel{\bullet}\sim N(p, p(1-p)/n)\)</span></li>
+<li><img src="img/cltbin.png" width="800px" style="float: left;"/></li>
+</ul>
+</div>
+<div id="convergence-in-probability-ideas" class="section level2">
+<h2>Convergence in Probability Ideas</h2>
+<p>We want to understand the behavior of the sequence <span class="math inline">\(X_n\)</span> as n grows.</p>
+<ul>
+<li><span class="math inline">\(\lim_{n\rightarrow\infty}P(-\epsilon &lt; X_n &lt; \epsilon) =0, \forall \epsilon&gt;0\)</span></li>
+<li>Visualize the <strong>sample paths</strong> of <span class="math inline">\(X_n\)</span></li>
+<li>Assume that <span class="math inline">\(Y_i\stackrel{iid}\sim N(0,1)\)</span>, and let <span class="math inline">\(X_n = \frac{1}{n^2}\sum_{i=1}^{n}Y_i\)</span></li>
+<li><span class="math inline">\(X_n\stackrel{p}\rightarrow 0\)</span></li>
+<li><img src="img/samplepath.png" width="700px" style="float: left;"/> <br></li>
+</ul>
+</div>
+<div id="explore-convergence-in-probability" class="section level2">
+<h2>Explore Convergence in Probability</h2>
+<p>Suppose we have a random sample <span class="math inline">\(Y\sim N (10,1)\)</span>:</p>
+<ul>
+<li>What does <span class="math inline">\(W = (\bar{Y})^2\)</span> converges to in probability?</li>
+<li><img src="img/cinprob.png" width="800px" style="float: left;"/></li>
+</ul>
+</div>
+<div id="additional-resources" class="section level2">
+<h2>Additional Resources</h2>
+<p>Material below available at
+<a href = "https://github.com/XiaoxiaChampon/ConvergenceConcepts/tree/master" style = "color:blue;">Github</a> (or use the QR code)</p>
+<ul>
+<li>Example notes for more R shiny apps:
+<ul>
+<li><a href = "https://jbpost2.github.io/pages/ShinyApps.html" style = "color:blue;">R shiny teaching apps</a></li>
+</ul></li>
+</ul>
+</div>
+
+</div>
+<div class="main">
+<p><span style="font-family: monospace; font-size: 140px;">Interactive Shiny Applications provides dynamic visuals of difficult topics such as convergence of random sequences, which allows hands-on explorations and better understanding of the intuition.</span><br><br> <img src = "img/generaldis.png" class = "main_pic" style = "width: 60%"></p>
+<img src="img/QRcc.png" class="main-img-left" />
+<img src="img/stat-logo-red.png" class="main-img-right" />
+</div>
+</div>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+var script = document.createElement("script");
+script.type = "text/javascript";
+var src = "true";
+if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+if (location.protocol !== "file:" && /^https?:/.test(src))
+src = src.replace(/^https?:/, '');
+script.src = src;
+document.getElementsByTagName("head")[0].appendChild(script);
+})();
+</script>
+
+
+</body>
+</html>
