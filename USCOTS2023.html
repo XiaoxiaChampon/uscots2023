@@ -293,7 +293,7 @@ span > #tab:mytable {
 <br>
 <h3 id="author" class="author">
 
-Xiaoxia Champon , Justin Post<sup> 1</sup><br>
+Xiaoxia Champon, Justin Post<sup> 1</sup><br>
 
 <a class='envelope'><i class="fas fa-envelope"></i></a> <a href="mailto:xzhao17@ncsu.edu" class="email">xzhao17@ncsu.edu</a>,<a href="mailto:jbpost2@ncsu.edu" class="email">jbpost2@ncsu.edu</a> <br>
 </h3>
@@ -302,72 +302,66 @@ Xiaoxia Champon , Justin Post<sup> 1</sup><br>
 </h5>
 
 <p id="affiliation" class="affiliation">
-<sup>1</sup> Department of Statistics, NC State University <br> jbpost2.github.io
+<sup>1</sup> Department of Statistics, NC State University
 </p>
 
 </div>
 <div id="motivation-and-goals" class="section level2">
 <h2>Motivation and Goals</h2>
-<p>The motivation of this activity is to encourage communicating these abstract topics with an interactive investigation focused on visuals that enhance intuition and understanding. To be specific:</p>
+<p>Based on years of teaching the difficult topics of convergence to both intro and advanced audiences, we’ve developed interactive visuals and exploration activities to help students understand the intuition behind these ideas and how to apply the results. Specifically:</p>
 <ul>
-<li>Two commonly taught convergence concepts: in distribution and in probability will be demonstrated through the use of interactive Shiny Applications</li>
-</ul>
-<p>-These tools allow for multiple random sequences with known features to be simulated and the behavior changes of the random sequences to be explored through visual representations</p>
-<p>-Any users can take advantage of this visualization tool without needing knowledge of any programming language</p>
-<p>-Users can share this app with students and peers which promotes collaborations</p>
-</div>
-<div id="the-idea-of-convergence-in-distribution" class="section level2">
-<h2>The idea of Convergence in Distribution</h2>
-<ul>
-<li>Compare the <em>actual</em> distribution and approximating distribution <br><br></li>
-<li>Do the cumulative density distributions match when the sample size is large?</li>
-<li>Explore: simulate sample mean by creating many <em>realizations</em> of <span class="math inline">\(\bar{Y}\)</span> where <span class="math inline">\(Y\sim Gamma (\alpha, \lambda)\)</span> <br></li>
-</ul>
-<p>-<img src="img/dgamma.png" width="900px" style="float: left;"/> <br></p>
-</div>
-<div id="central-limit-theorem-applied-to-a-sample-proportion" class="section level2">
-<h2>Central Limit Theorem Applied to a Sample Proportion</h2>
-<p>CLT application - the sample proportion from a Binomial distribution</p>
-<ul>
-<li>If <span class="math inline">\(X_i\stackrel{iid}\sim Bin(1, p)\)</span> with mean <span class="math inline">\(E(Y) = p\)</span> and variance <span class="math inline">\(Var(Y) = p(1-p)\)</span></li>
-<li><span class="math inline">\(\bar{X} = \frac{\sum_{i=1}^{n}X_i}{n} = \frac{Y}{n}\stackrel{\bullet}\sim N(p, p(1-p)/n)\)</span></li>
-<li><img src="img/cltbin.png" width="800px" style="float: left;"/></li>
+<li>Two commonly taught convergence concepts: ‘in distribution’ and ‘in probability’ are demonstrated through the use of interactive Shiny Applications</li>
+<li>These tools allow for multiple random sequences with known features to be simulated and the behavior changes of the random sequences to be explored</li>
+<li>Users can take advantage of these visualizations without needing knowledge of any programming language</li>
 </ul>
 </div>
-<div id="convergence-in-probability-ideas" class="section level2">
-<h2>Convergence in Probability Ideas</h2>
-<p>We want to understand the behavior of the sequence <span class="math inline">\(X_n\)</span> as n grows.</p>
+<div id="exploring-convergence-in-distribution" class="section level2">
+<h2>Exploring Convergence in Distribution</h2>
+<p>The <code>ExploringConvergenceInDistribution.Rmd</code> file can be downloaded and run in RStudio (see QR code link for details). This file can be used for an introductory course or a more advanced course.</p>
 <ul>
-<li><span class="math inline">\(\lim_{n\rightarrow\infty}P(-\epsilon &lt; X_n &lt; \epsilon) =0, \forall \epsilon&gt;0\)</span></li>
-<li>Visualize the <strong>sample paths</strong> of <span class="math inline">\(X_n\)</span></li>
-<li>Assume that <span class="math inline">\(Y_i\stackrel{iid}\sim N(0,1)\)</span>, and let <span class="math inline">\(X_n = \frac{1}{n^2}\sum_{i=1}^{n}Y_i\)</span></li>
-<li><span class="math inline">\(X_n\stackrel{p}\rightarrow 0\)</span></li>
-<li><img src="img/samplepath.png" width="700px" style="float: left;"/> <br></li>
+<li>Convergence in distribution is <strong>introduced through sampling from a Binomial</strong></li>
+<li>An activity allows students to try to <strong>develop a rule of thumb</strong> for when the <strong>CLT is appropriate when sampling from a Gamma distribution</strong>
+<ul>
+<li>Convergence is looked at via histograms and comparisons of relevant CDFs</li>
+</ul></li>
+<li>A general convergence app allows students to explore sampling from 10 common distributions and observe the sampling distributions of seven different statistics</li>
+</ul>
+<!-- ## CLT Applied to a Binomial Sample Proportion -->
+<!-- <img src="img/cltbin.png" width="800px"> -->
+</div>
+<div id="gamma-convergence-example" class="section level2">
+<h2>Gamma Convergence Example</h2>
+<p><img src="img/dgamma.png" width="900px"></p>
+</div>
+<div id="exploring-convergence-in-probability" class="section level2">
+<h2>Exploring Convergence in Probability</h2>
+<p>The <code>ExploringConvergence.Rmd</code> file can be downloaded and run in RStudio (see QR code link for details). This file is only appropriate for a more advanced course.</p>
+<ul>
+<li>Convergence in distribution is discussed in a similar way to the previous file</li>
+<li>Convergence in probability of the <strong>sample proportion to the true proportion</strong> is investigated using simulations of different sample sizes</li>
+<li>Convergence in probability is explored visually through similar graphs</li>
+<li>An activity to <strong>guess what a particular statistic converges to</strong> allows the students to use their prior knowledge to make an educated guess and observe convergence in probability intuitively</li>
 </ul>
 </div>
-<div id="explore-convergence-in-probability" class="section level2">
-<h2>Explore Convergence in Probability</h2>
-<p>Suppose we have a random sample <span class="math inline">\(Y\sim N (10,1)\)</span>:</p>
-<ul>
-<li>What does <span class="math inline">\(W = (\bar{Y})^2\)</span> converges to in probability?</li>
-<li><img src="img/cinprob.png" width="800px" style="float: left;"/></li>
-</ul>
+<div id="visualizing-convergence-in-probability" class="section level2">
+<h2>Visualizing Convergence in Probability</h2>
+<p>For <span class="math inline">\(Y_i\stackrel{iid}\sim N(0,1)\)</span>, convergence of <span class="math inline">\(X_n = \frac{1}{n^2}\sum_{i=1}^{n}Y_i\)</span> is explored visually</p>
+<p><img src="img/samplepath.png" width="700px"></p>
+</div>
+<div id="educated-guessing-at-convergence" class="section level2">
+<h2>Educated Guessing at Convergence</h2>
+<p>Using <span class="math inline">\(Y\stackrel{iid}\sim N (10,1)\)</span>, <span class="math inline">\(W = (\bar{Y})^2\)</span> is investigated</p>
+<p><img src="img/cinprob.png" width="800px"></p>
 </div>
 <div id="additional-resources" class="section level2">
 <h2>Additional Resources</h2>
-<p>Material below available at
+<p>Available at
 <a href = "https://github.com/XiaoxiaChampon/ConvergenceConcepts/tree/master" style = "color:blue;">Github</a> (or use the QR code)</p>
-<ul>
-<li>Example notes for more R shiny apps:
-<ul>
-<li><a href = "https://jbpost2.github.io/pages/ShinyApps.html" style = "color:blue;">R shiny teaching apps</a></li>
-</ul></li>
-</ul>
 </div>
 
 </div>
 <div class="main">
-<p><span style="font-family: monospace; font-size: 140px;">Interactive Shiny Applications provides dynamic visuals of difficult topics such as convergence of random sequences, which allows hands-on explorations and better understanding of the intuition.</span><br><br> <img src = "img/generaldis.png" class = "main_pic" style = "width: 60%"></p>
+<p><span style="font-family: monospace; font-size: 140px;">Interactive Shiny Applications provide dynamic visuals of difficult convergence topics, which allows for hands-on explorations and improved intuition behind the concepts</span><br><br> <img src = "img/generaldis.png" class = "main_pic" style = "width: 60%"></p>
 <img src="img/QRcc.png" class="main-img-left" />
 <img src="img/stat-logo-red.png" class="main-img-right" />
 </div>

@@ -2,20 +2,20 @@
 title: "Teaching and Student Exploration of Convergence Concepts Using Interactive Shiny Applications"
 
 author:
-  - name: " Xiaoxia Champon , Justin Post"
+  - name: " Xiaoxia Champon, Justin Post"
     affil: 1
     email: "xzhao17@ncsu.edu,jbpost2@ncsu.edu"
     main: true
 affiliation:
   - num: 1
-    address: Department of Statistics, NC State University <br> jbpost2.github.io
+    address: Department of Statistics, NC State University
  
 poster_height: "36in"
 poster_width: "47.25in"
 secondary_colour: "#F2F2F2"
 primary_colour: "#CC0000"
 main_findings:
-  - "<span style = 'font-family: monospace; font-size: 140px;'>Interactive Shiny Applications provides dynamic visuals of difficult topics such as convergence of random sequences, which allows hands-on explorations and better understanding of the intuition.</span>"
+  - "<span style = 'font-family: monospace; font-size: 140px;'>Interactive Shiny Applications provide dynamic visuals of difficult convergence topics, which allows for hands-on explorations and improved intuition behind the concepts</span>"
   - '<img src = "img/generaldis.png" class = "main_pic" style = "width: 60%">'
 logoleft_name: '![](img/QRcc.png){.main-img-left}'
 logoright_name: '![](img/stat-logo-red.png){.main-img-right}'
@@ -43,57 +43,54 @@ options(knitr.table.format = "html")
 
 ##  Motivation and Goals
 
-The motivation of this activity is to encourage communicating these abstract topics with an interactive investigation focused on visuals that enhance intuition and understanding. To be specific:
+Based on years of teaching the difficult topics of convergence to both intro and advanced audiences, we've developed interactive visuals and exploration activities to help students understand the intuition behind these ideas and how to apply the results. Specifically:
+
+- Two commonly taught convergence concepts: 'in distribution' and 'in probability' are demonstrated through the use of interactive Shiny Applications
+- These tools allow for multiple random sequences with known features to be simulated and the behavior changes of the random sequences to be explored
+- Users can take advantage of these visualizations without needing knowledge of any programming language
+
+## Exploring Convergence in Distribution 
+
+The `ExploringConvergenceInDistribution.Rmd` file can be downloaded and run in RStudio (see QR code link for details). This file can be used for an introductory course or a more advanced course. 
+
+- Convergence in distribution is **introduced through sampling from a Binomial**
+- An activity allows students to try to **develop a rule of thumb** for when the **CLT is appropriate when sampling from a Gamma distribution**
+    + Convergence is looked at via histograms and comparisons of relevant CDFs
+- A general convergence app allows students to explore sampling from 10 common distributions and observe the sampling distributions of seven different statistics 
+
+<!-- ## CLT Applied to a Binomial Sample Proportion -->
+
+<!-- <img src="img/cltbin.png" width="800px"> -->
+
+## Gamma Convergence Example
+
+<img src="img/dgamma.png" width="900px">
 
 
-- Two commonly taught convergence concepts: in distribution and in probability will be demonstrated through the use of interactive Shiny Applications
+## Exploring Convergence in Probability
 
--These tools allow for multiple random sequences with known features to be simulated and the behavior changes of the random sequences to be explored through visual representations
+The `ExploringConvergence.Rmd` file can be downloaded and run in RStudio (see QR code link for details). This file is only appropriate for a more advanced course. 
 
--Any users can take advantage of this visualization tool without needing knowledge of any programming language
-
--Users can share this app with students and peers which promotes collaborations
-
-## The idea of Convergence in Distribution 
-
--   Compare the *actual* distribution and approximating distribution <br><br>
--   Do the cumulative density distributions match when the sample size is large?
--  Explore: simulate sample mean by creating many *realizations* of $\bar{Y}$ where $Y\sim Gamma (\alpha, \lambda)$ <br>
-
--<img src="img/dgamma.png" width="900px" style="float: left;"/> <br>
+- Convergence in distribution is discussed in a similar way to the previous file
+- Convergence in probability of the **sample proportion to the true proportion** is investigated using simulations of different sample sizes
+- Convergence in probability is explored visually through similar graphs
+- An activity to **guess what a particular statistic converges to** allows the students to use their prior knowledge to make an educated guess and observe convergence in probability intuitively
 
 
-## Central Limit Theorem Applied to a Sample Proportion
+## Visualizing Convergence in Probability
 
-CLT application - the sample proportion from a Binomial distribution
+For $Y_i\stackrel{iid}\sim N(0,1)$, convergence of $X_n = \frac{1}{n^2}\sum_{i=1}^{n}Y_i$ is explored visually
 
--   If $X_i\stackrel{iid}\sim Bin(1, p)$ with mean $E(Y) = p$ and variance $Var(Y) = p(1-p)$
--   $\bar{X} = \frac{\sum_{i=1}^{n}X_i}{n} = \frac{Y}{n}\stackrel{\bullet}\sim N(p, p(1-p)/n)$
-- <img src="img/cltbin.png" width="800px" style="float: left;"/>
+<img src="img/samplepath.png" width="700px"> 
 
+## Educated Guessing at Convergence
 
-## Convergence in Probability Ideas
+Using $Y\stackrel{iid}\sim N (10,1)$, $W = (\bar{Y})^2$ is investigated
 
-We want to understand the behavior of the sequence $X_n$ as n grows.
-
--   $\lim_{n\rightarrow\infty}P(-\epsilon < X_n < \epsilon) =0, \forall \epsilon>0$
--   Visualize the **sample paths** of $X_n$
--   Assume that $Y_i\stackrel{iid}\sim N(0,1)$, and let $X_n = \frac{1}{n^2}\sum_{i=1}^{n}Y_i$
--   $X_n\stackrel{p}\rightarrow 0$
--   <img src="img/samplepath.png" width="700px" style="float: left;"/> <br>
-
-
-## Explore Convergence in Probability 
-Suppose we have a random sample $Y\sim N (10,1)$:
-
--  What does $W = (\bar{Y})^2$ converges to in probability?
--   <img src="img/cinprob.png" width="800px" style="float: left;"/>
+<img src="img/cinprob.png" width="800px">
 
 
 ## Additional Resources
 
-Material below available at 
+Available at 
 <a href = "https://github.com/XiaoxiaChampon/ConvergenceConcepts/tree/master" style = "color:blue;">Github</a> (or use the QR code)
-
-- Example notes for more R shiny apps: 
-  -  <a href = "https://jbpost2.github.io/pages/ShinyApps.html" style = "color:blue;">R shiny teaching apps</a>  
